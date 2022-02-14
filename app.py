@@ -54,12 +54,14 @@ def command():
             
             return dat
         elif req['command'] == 'stop':
-            output = subprocess.check_output("systemctl stop seismon.service", shell=True, text=True)
-            # print(output)
+            output = subprocess.Popen(["systemctl stop seismon.service"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout, stderr = output.communicate()
+            print(stdout)
+            print(stderr)
             # subprocess.check_output("systemctl stop seismon.service", shell=True, text=True, encoding="utf8")
             # result =subprocess.call(("coba.sh"), shell=True, text=True, encoding="utf8")
             dat={
-                "output":output
+                "output":stdout
                 # "success":True if result == "" else False
             }
             
