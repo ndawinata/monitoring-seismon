@@ -1,289 +1,277 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="https://www.bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Logbook Digital Stageof Kupang</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Title -->
+  <title>Monitoring Seismon</title>
+
+  <!-- Required Meta Tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Bootstrap HTML template and UI kit by Erilisdesign">
+  <link rel="shortcut icon" href="https://bmkg.go.id/asset/img/favicon.ico" type="image/x-icon">
+  <!-- Libs CSS -->
+  <link rel="stylesheet" href="/static/assets/vendor/fullPage.js/dist/jquery.fullpage.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/slick/slick.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/vegas/vegas.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/magnific-popup/dist/magnific-popup.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/animate.css/animate.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/font-awesome/css/all.min.css" type="text/css">
+  <link rel="stylesheet" href="/static/assets/vendor/themify-icons/css/themify-icons.css" type="text/css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- Fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CMontserrat:200,300,400,500,700&display=swap">
+
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="/static/assets/css/theme.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/assets/css/custom.css">
+
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">Stasiun Geofisika Kupang</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/katalog-gempa">Katalog Gempa</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Aduan
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/pengaduan-masyarakat">Pengaduan Masyarakat</a></li>
-                            <li><a class="dropdown-item" href="/pengaduan-whistle-blowing-system">Pengaduan Wistle Blowing System</a></li>
-                            
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/laporan-gempa">Laporan Gempa</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container mt-4">
-        <div class="container">
-            <h4>LAPORAN PER SHIFT</h4>
-            <h4>KEGIATAN TEKNIK PENGAMATAN GEOFISIKA</h4>
-            <h4>STASIUN GEOFISIKA KUPANG</h4>
-        </div>
-        <br>
-        <form enctype="multipart/form-data" method="post">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <label for="jenis_dinas" class="form-label">Jenis Dinas</label>
-                        <select id="jenis_dinas" name="jenis_dinas" class="form-select"
-                            aria-label="Default select example">
-                            <option selected></option>
-                            {% for x in data['Jenis Dinas'] %}
-                            <option value="{{x}}">
-                                {{x}}
-                            </option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="datetime" class="form-label">Tanggal</label>
-                        <input type= class="form-control" id="datetime" name="datetime">
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col">
-                        <label for="petugas_serah" class="form-label">Nama Petugas yang Menyerahkan</label>
-                        <select id="petugas_serah" name="petugas_serah" class="form-select"
-                            aria-label="Default select example">
-                            <option selected></option>
-                            {% for x in data['Petugas'] %}
-                            <option value="{{x}}">{{x}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="petugas_terima" class="form-label">Nama Petugas yang Menerima</label>
-                        <select id="petugas_terima" name="petugas_terima" class="form-select"
-                            aria-label="Default select example">
-                            <option selected></option>
-                            {% for x in data['Petugas'] %}
-                            <option value="{{x}}">{{x}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col">
-                        <b>SEISCOMP3</b>
-                        <div class="row mt-2">
-                            {% for x in data['Seiscomp3'] %}
-                            <div class="col mt-2">
-                                <label for="{{x.key}}" class="form-label">{{x.title}}</label>
-                                <select id="{{x.key}}" name="{{x.key}}" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="Baik">Baik</option>
-                                    <option value="Sedang">Sedang</option>
-                                    <option value="Rusak">Rusak</option>
-                                </select>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col">
-                        <b>ACCELEROGRAPH</b>
-                        <div class="row mt-2">
-                            {% for x in data['accelero'] %}
-                            <div class="col mt-2">
-                                <label for="{{x.key}}" class="form-label">{{x.title}}</label>
-                                <select id="{{x.key}}" name="{{x.key}}" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="Baik">Baik</option>
-                                    <option value="Sedang">Sedang</option>
-                                    <option value="Rusak">Rusak</option>
-                                </select>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col">
-                        <b>INTENSITY METER</b>
-                        <div class="row mt-2">
-                            {% for x in data['IntensityMeter'] %}
-                            <div class="col mt-2">
-                                <label for="{{x.key}}" class="form-label">{{x.title}}</label>
-                                <select id="{{x.key}}" name="{{x.key}}" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="Baik">Baik</option>
-                                    <option value="Sedang">Sedang</option>
-                                    <option value="Rusak">Rusak</option>
-                                </select>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col">
-                        <b>WRS NEW GEN</b>
-                        <div class="row mt-2">
-                            {% for x in data['WrsNewgen'] %}
-                            <div class="col mt-2">
-                                <label for="{{x.key}}" class="form-label">{{x.title}}</label>
-                                <select id="{{x.key}}" name="{{x.key}}" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="Baik">Baik</option>
-                                    <option value="Sedang">Sedang</option>
-                                    <option value="Rusak">Rusak</option>
-                                </select>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col">
-                        <b>LIGHTNING DETECTOR 2000</b>
-                        <div class="row mt-2">
-                            {% for x in data['LD'] %}
-                            <div class="col mt-2">
-                                <label for="{{x.key}}" class="form-label">{{x.title}}</label>
-                                <select id="{{x.key}}" name="{{x.key}}" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="Baik">Baik</option>
-                                    <option value="Sedang">Sedang</option>
-                                    <option value="Rusak">Rusak</option>
-                                </select>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="col">
-                        <b>SARANA PENDUKUNG OPERASIONAL</b>
-                        <div class="row mt-2">
-                            {% for x in data['SaranaPendukung'] %}
-                            <div class="col mt-2">
-                                <label for="{{x.key}}" class="form-label">{{x.title}}</label>
-                                <select id="{{x.key}}" name="{{x.key}}" class="form-select"
-                                    aria-label="Default select example">
-                                    <option value="Baik">Baik</option>
-                                    <option value="Sedang">Sedang</option>
-                                    <option value="Rusak">Rusak</option>
-                                </select>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4 mb-4">
-                    <div class="row mt-4">
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                        <div class="col">
-                            <a class="btn btn-primary" href="/laporan-harian" role="button">Download Laporan Harian</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- </div> -->
-            </div>
-        </form>
+<body class="layout-wide">
+
+  <!-- Loader -->
+  <div class="loader bg-dark">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
-    <footer class="bg-dark text-center text-white">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Social media -->
-            <section class="mb-4">
-                <!-- Facebook -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-              ><i class="fab fa-facebook-f"></i
-            ></a> -->
+  </div>
 
-                <!-- Twitter -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-              ><i class="fab fa-twitter"></i
-            ></a> -->
+  <div id="top"></div>
 
-                <!-- Google -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-              ><i class="fab fa-google"></i
-            ></a> -->
+  <!-- Site navigation -->
+  <nav
+    class="site-navbar site-navbar-transparent navbar navbar-expand-lg navbar-dark fixed-top bg-white shadow-light p-lg-4"
+    data-navbar-base="navbar-dark" data-navbar-toggled="navbar-light" data-navbar-scrolled="navbar-light">
 
-                <!-- Instagram -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-              ><i class="fab fa-instagram"></i
-            ></a> -->
+    <!-- Brand -->
+    <a class="navbar-brand" href="/">
+        MONITORING SEISMON
+      <!-- <img src="/static/assets/images/bmkgntt.png" class="navbar-brand-img" alt=""> -->
+    </a>
 
-                <!-- Linkedin -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-              ><i class="fab fa-linkedin-in"></i
-            ></a> -->
+    <!-- Toggler -->
+    <button class="navbar-toggler-alternative" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-alternative-icon"></span>
+    </button>
 
-                <!-- Github -->
-                <!-- <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-              ><i class="fab fa-github"></i
-            ></a> -->
-            </section>
-            <!-- Section: Social media -->
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <!-- Navigation -->
+      {% include 'navbar.html' %}
+      <!-- Button -->
+      <!-- <button type="button" class="btn btn-soft-white d-block d-lg-none d-xl-inline-block mb-3 mb-lg-0 ml-lg-3 w-100 w-lg-auto" data-toggle="modal" data-target="#documentationModal" data-on-navbar-light="btn-soft-secondary" data-on-navbar-dark="btn-soft-white">Documentation</button> -->
+
+      <!-- Button -->
+      <!-- <a class="btn btn-primary d-block d-lg-inline-block ml-lg-3" href="!#">Buy now</a> -->
+
+    </div>
+  </nav>
+
+  <!-- Back To Top Button -->
+  <a href="#top" class="backtotop">
+    <span>Back To Top</span>
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress">
+    <div class="sp-left">
+      <div class="sp-inner"></div>
+      <div class="sp-inner progress"></div>
+    </div>
+    <div class="sp-right">
+      <div class="sp-inner"></div>
+      <div class="sp-inner progress"></div>
+    </div>
+  </div>
+
+  <!-- Fullpage content -->
+  <div class="ln-fullpage" data-navigation="true">
+
+    <!-- Section - Home -->
+    <section class="ln-section d-flex min-vh-100" data-anchor="home" data-tooltip="Home" data-ui="light"
+      data-navbar="navbar-dark">
+      <div class="overlay overlay-advanced">
+        <div class="overlay-inner bg-image-holder bg-cover bg-bottom-center">
+          <img src="/static/assets/images/bgcuy.jpg" alt="background">
         </div>
-        <!-- Grid container -->
+        <div class="overlay-inner bg-dark opacity-70"></div>
+      </div>
+      <div class="container align-self-center text-white">
+        <div class="row">
+          <div class="col-12 col-lg-9 col-xl-6">
 
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 Copyright -
-            <a class="text-white" href="https://bmkg.go.id/">Stasiun Geofisika Kupang</a>
+            <h1 class="mb-4 animated" data-animation="fadeInUp">We bulid beautiful digital experiences</h1>
+            <p class="mb-7 animated" data-animation="fadeInUp" data-animation-delay="200">A beautiful and easy to use
+              template that lets you create the perfect website for your future agency or business.</p>
+            <button onclick="restart()" class="btn btn-soft-white m-3 scrollto animated" data-animation="fadeInUp"
+              data-animation-delay="600" >Restart Seismon</button>
+            <button onclick="start()" class="btn btn-soft-white m-3 scrollto animated" data-animation="fadeInUp"
+              data-animation-delay="600" >Start Seismon</button>
+            <button onclick="stop()" class="btn btn-soft-white m-3 scrollto animated" data-animation="fadeInUp"
+              data-animation-delay="600" >Stop Seismon</button>
+            <button onclick="status()" class="btn btn-soft-white m-3 scrollto animated" data-animation="fadeInUp"
+              data-animation-delay="600" >Status Seismon</button>
+          </div>
         </div>
-        <!-- Copyright -->
-    </footer>
-    <script>
-        $(document).ready(function () {
-            // $("#jenis_dinas").change(function() {
-            //     $("#in").text($("#jenis_dinas").val());
-            //     $("#in1").addClass("d-none")
-            //     // alert("ffsfsfs")
-            // });
-            $("#jenis_dinas").change(function () {
+      </div>
+    </section>
 
-            });
-            $("#btn2").click(function () {
-                $("#test2").remove();
-            });
-            $("#success-alert").fadeTo(5000, 500).slideUp(500, function () {
-                $("#success-alert").slideUp(1000);
-            });
-            $("#alert").fadeTo(5000, 500).slideUp(500, function () {
-                $("#alert").slideUp(1000);
-            });
-        });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-    </script>
+   
+
+    <!-- list harga -->
+    <!-- <section style="height: 100vh;" class="ln-section d-xl-flex" data-anchor="datin" data-tooltip="datin"
+      data-ui="light" data-navbar="navbar-dark">
+      <div class="overlay overlay-advanced">
+        <div class="overlay-inner bg-image-holder bg-cover">
+          <img src="/static/assets/images/data.jpg" alt="background">
+        </div>
+        <div class="overlay-inner bg-dark opacity-50"></div>
+      </div>
+      <div class="container align-self-xl-center text-white pt-15 pb-10">
+        <div class="text-center">
+          <div class="col-12 mb-10 animated" data-animation="fadeInUp">
+            <div class="icon-7x mb-4" style="color: #FFD700;">
+              <i class="far fa-file-word"></i>
+            </div>
+            <h3 class="h4 mb-0">Data dan Informasi</h3>
+          </div>
+        </div>
+        <div class="row pt-5 pb-5">
+          <div id="example-table"></div>
+        </div>
+      </div>
+    </section> -->
+
+  </div>
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+  <!-- footer end -->
+
+  <!-- Fullpage - Social icons -->
+  <nav class="ln-social-icons">
+    <ul class="mx-auto">
+      <li><a href="#!"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="#!"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#!"><i class="fab fa-instagram"></i></a></li>
+      <li><a href="#!"><i class="fab fa-pinterest"></i></a></li>
+    </ul>
+  </nav>
+
+  <!-- Fullpage - Copyright -->
+  <div class="ln-copyright text-right">
+    <p>© 2020 Lana - All Rights Reserved - <a href="#!">Terms of Service</a></p>
+  </div>
+
+  <!-- Documentation Modal -->
+  <div class="modal fade" id="documentationModal" tabindex="-1" role="dialog" aria-labelledby="documentation"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+      <div class="modal-content hover-parent">
+
+        <!-- Button Close -->
+        <button type="button"
+          class="btn btn-sm btn-icon btn-primary position-absolute top-0 right-0 mt-n3 mr-n3 zindex-1"
+          data-dismiss="modal" aria-hidden="true">
+          <i class="fas fa-times btn-icon-inner"></i>
+        </button>
+
+        <!-- Modal Body -->
+        <div class="modal-body py-5 py-lg-8 px-5 px-lg-8 text-center">
+
+          <div class="icon icon-boxed icon-7x rounded bg-soft-primary text-primary mb-8">
+            <i class="ti-book"></i>
+          </div>
+          <h2 id="documentation" class="mb-3">Documentation</h2>
+          <p class="mb-8">This theme is easy to configure and comes witch a well documented help file, which will assist
+            you in the configuration of your new website in few minutes.</p>
+
+          <!-- Button -->
+          <a class="btn btn-primary d-block d-lg-inline-block" href="!#">Buy theme</a>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscribe Modal -->
+  <div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeNewsletter"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content hover-parent">
+
+        <!-- Button Close -->
+        <button type="button" class="btn btn-sm btn-icon btn-white position-absolute top-0 right-0 mt-n3 mr-n3 zindex-1"
+          data-dismiss="modal" aria-hidden="true">
+          <i class="fas fa-times btn-icon-inner"></i>
+        </button>
+
+        <!-- Overlay -->
+        <div class="overlay overlay-advanced">
+          <div class="overlay-inner bg-cover" style="background-image: url('/static/assets/images/image-12.jpg');">
+          </div>
+          <div class="overlay-inner bg-primary opacity-70 hover-opacity-80"></div>
+          <div class="overlay-inner bg-gradient-v-transparent-dark opacity-90 hover-opacity-80"></div>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body py-5 py-lg-8 px-5 px-lg-8 text-white text-center">
+
+          <h2 id="subscribeNewsletter" class="mb-4">Subscribe<br /> to our newsletter</h2>
+          <p class="mb-7 mb-lg-10">Signup for our weekly newsletter to get the latest news, updates and amazing offers
+            delivered directly in your inbox.</p>
+          <div class="subscribe-form">
+            <form id="sf" name="sf" action="include/subscribe.php" method="post">
+              <div class="form-process"></div>
+              <div class="form-group">
+                <input type="email" id="sf-email" name="sf-email" placeholder="Enter Your Email Address"
+                  class="form-control required">
+              </div>
+              <input type="text" id="sf-botcheck" name="sf-botcheck" value="" class="form-control d-none">
+              <button class="btn btn-soft-white btn-block" type="submit" id="sf-submit" name="sf-submit">Notify
+                Me</button>
+            </form>
+            <div class="subscribe-form-result"></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"
+    integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Libs JS -->
+  <script src="/static/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="/static/assets/vendor/popper.js/dist/popper.min.js"></script>
+  <script src="/static/assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/static/assets/vendor/fullPage.js/dist/scrolloverflow.min.js"></script>
+  <script src="/static/assets/vendor/fullPage.js/dist/jquery.fullpage.min.js"></script>
+  <script src="/static/assets/vendor/waypoints/lib/jquery.waypoints.min.js"></script>
+  <script src="/static/assets/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min.js"></script>
+  <script src="/static/assets/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+  <script src="/static/assets/vendor/jquery-form/dist/jquery.form.min.js"></script>
+  <script src="/static/assets/vendor/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+  <script src="/static/assets/vendor/jQuery.countdown/dist/jquery.countdown.min.js"></script>
+  <script src="/static/assets/vendor/granim.js/dist/granim.min.js"></script>
+  <script src="/static/assets/vendor/slick/slick.min.js"></script>
+  <script src="/static/assets/vendor/vegas/vegas.min.js"></script>
+
+  <!-- Theme JS -->
+  <script src="/static/assets/js/main.js"></script>
+  <script src="/static/assets/js/myscript.js"></script>
 
 </body>
 

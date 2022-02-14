@@ -36,6 +36,11 @@ app.config['UPLOAD_FOLDER'] = 'static'
 
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'json'}
 
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    
+    return render_template("index.html")
+    
 @app.route('/command', methods=['GET', 'POST'])
 def command():
     if request.method == 'POST':
