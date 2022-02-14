@@ -92,12 +92,12 @@ def command():
             
             return dat
         elif req['command'] == 'coba':
-            # result = subprocess.check_output(req['text'], text=True, shell=True)
-            # dat={
-            #     "output":result,
-            # }
+            result = os.system("ls")
+            dat={
+                "output":result,
+            }
             
-            return {"success":True}
+            return dat
 
 @app.errorhandler(404)
 def not_found(error=None):
@@ -111,4 +111,4 @@ def not_found(error=None):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=4000)
