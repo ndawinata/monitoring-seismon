@@ -51,28 +51,32 @@ def command():
         elif req['command'] == 'stop':
             result = subprocess.check_output("systemctl stop seismon.service", shell=True, text=True, encoding="utf8")
             dat={
-                "output":result
+                "output":result,
+                "success":True if result == "" else False
             }
             
             return dat
         elif req['command'] == 'start':
             result = subprocess.check_output("systemctl start seismon.service", shell=True, text=True, encoding="utf8")
             dat={
-                "output":result
+                "output":result,
+                "success":True if result == "" else False
             }
             
             return dat
         elif req['command'] == 'pull':
             result = subprocess.check_output("git pull origin master; systemctl restart seismon.service;", shell=True, text=True, encoding="utf8")
             dat={
-                "output":result
+                "output":result,
+                "success":True if result != "" else False
             }
             
             return dat
         elif req['command'] == 'status':
             result = subprocess.check_output("systemctl status seismon.service", text=True, shell=True)
             dat={
-                "output":result
+                "output":result,
+                "success":True if result != "" else False
             }
             
             return dat
