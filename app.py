@@ -54,7 +54,7 @@ def command():
             
             return dat
         elif req['command'] == 'stop':
-            output = subprocess.Popen(["systemctl stop seismon.service"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output = subprocess.Popen(["systemctl stop monseismon.service"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             stdout, stderr = output.communicate()
             print(stdout)
             print(stderr)
