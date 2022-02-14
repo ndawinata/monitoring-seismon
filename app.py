@@ -80,6 +80,13 @@ def command():
             }
             
             return dat
+        elif req['command'] == 'manual':
+            result = subprocess.check_output(req['text'], text=True, shell=True)
+            dat={
+                "output":result,
+            }
+            
+            return dat
 
 @app.errorhandler(404)
 def not_found(error=None):
