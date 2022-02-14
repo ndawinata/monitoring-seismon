@@ -5,9 +5,9 @@ After=network.target
 [Service]
 User=root
 Group=www-data
-WorkingDirectory=/home/inatews/seismon-server/
+WorkingDirectory=/home/inatews/monitoring-seismon/
 Environment="PATH=/home/inatews/seismon-server/myenv/bin"
-ExecStart=/home/inatews/seismon-server/myenv/bin/gunicorn --config gunicorn_config.py wsgi:app
+ExecStart=/home/inatews/monitoring-seismon/myenv/bin/gunicorn --config gunicorn_config.py wsgi:app
 
 [Install]
 WantedBy=multi-user.target
