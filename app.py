@@ -45,7 +45,8 @@ def command():
     if request.method == 'POST':
         req = request.json
         if req['command'] == 'restart':
-            result = subprocess.check_output("systemctl restart seismon.service", shell=True, text=True, encoding="utf8")
+            result = os.system("systemctl restart seismon.service")
+            # subprocess.check_output("systemctl restart seismon.service", shell=True, text=True, encoding="utf8")
             dat={
                 "output":result,
                 "success":True if result == "" else False
@@ -61,7 +62,8 @@ def command():
             
             return dat
         elif req['command'] == 'start':
-            result = subprocess.check_output("systemctl start seismon.service", shell=True, text=True, encoding="utf8")
+            result = os.system("systemctl start seismon.service")
+            # result = subprocess.check_output("systemctl start seismon.service", shell=True, text=True, encoding="utf8")
             dat={
                 "output":result,
                 "success":True if result == "" else False
@@ -69,7 +71,8 @@ def command():
             
             return dat
         elif req['command'] == 'pull':
-            result = subprocess.check_output("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon;", shell=True, text=True, encoding="utf8")
+            result = os.system("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon;")
+            # result = subprocess.check_output("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon;", shell=True, text=True, encoding="utf8")
             dat={
                 "output":result,
                 "success":True if result != "" else False
@@ -77,7 +80,8 @@ def command():
             
             return dat
         elif req['command'] == 'status':
-            result = subprocess.check_output("systemctl status seismon.service", text=True, shell=True)
+            result = os.system("systemctl status seismon.service")
+            # result = subprocess.check_output("systemctl status seismon.service", text=True, shell=True)
             dat={
                 "output":result,
                 "success":True if result != "" else False
