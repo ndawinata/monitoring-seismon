@@ -54,7 +54,7 @@ def command():
             
             return dat
         elif req['command'] == 'stop':
-            r = os.popen('systemctl stop seismon.service')
+            r = os.system('systemctl stop seismon.service')
             output = r.read()
             print(output)
             # subprocess.check_output("systemctl stop seismon.service", shell=True, text=True, encoding="utf8")
