@@ -65,7 +65,7 @@ def command():
             
             return dat
         elif req['command'] == 'pull':
-            result = subprocess.check_output("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon", shell=True, text=True, encoding="utf8")
+            result = subprocess.check_output("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon;", shell=True, text=True, encoding="utf8")
             dat={
                 "output":result,
                 "success":True if result != "" else False
