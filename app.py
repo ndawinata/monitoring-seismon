@@ -54,8 +54,9 @@ def command():
             
             return dat
         elif req['command'] == 'stop':
-            result = os.system("systemctl stop seismon.service")
+            # result = os.system("systemctl stop seismon.service")
             # subprocess.check_output("systemctl stop seismon.service", shell=True, text=True, encoding="utf8")
+            result =subprocess.run("systemctl stop seismon.service", shell=True, text=True, encoding="utf8")
             dat={
                 "output":result,
                 "success":True if result == "" else False
