@@ -6,7 +6,7 @@ After=network.target
 User=root
 Group=www-data
 WorkingDirectory=/home/inatews/monitoring-seismon/
-Environment="PATH=/home/inatews/seismon-server/myenv/bin"
+Environment="PATH=/home/inatews/monitoring-seismon/myenv/bin"
 ExecStart=/home/inatews/monitoring-seismon/myenv/bin/gunicorn --config gunicorn_config.py wsgi:app
 
 [Install]
