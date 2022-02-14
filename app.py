@@ -2,15 +2,11 @@ from flask import Flask, json, render_template, request, make_response, session,
 from mysql.connector.utils import read_bytes
 from werkzeug.utils import secure_filename
 import os, sys
-from docxtpl import DocxTemplate, InlineImage
 from DateTime import DateTime
 import time
 import calendar
 from datetime import datetime
-from openpyxl import Workbook, load_workbook
-from openpyxl.styles import Alignment
 import mysql.connector
-from docx.shared import Mm
 from flask_cors import CORS
 import uuid
 import io
