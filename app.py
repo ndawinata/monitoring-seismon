@@ -43,7 +43,8 @@ def command():
         if req['command'] == 'restart':
             result = subprocess.check_output("systemctl restart seismon.service", shell=True, text=True, encoding="utf8")
             dat={
-                "output":result
+                "output":result,
+                "success":True if result == "" else False
             }
             
             return dat
