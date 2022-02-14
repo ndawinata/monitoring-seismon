@@ -34,7 +34,6 @@ app.config['UPLOAD_FOLDER'] = 'static'
 
 # biar tidak error saat get data yang kedua dst
 
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'json'}
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -92,6 +91,13 @@ def command():
             }
             
             return dat
+        elif req['command'] == 'coba':
+            # result = subprocess.check_output(req['text'], text=True, shell=True)
+            # dat={
+            #     "output":result,
+            # }
+            
+            return {"success":True}
 
 @app.errorhandler(404)
 def not_found(error=None):
@@ -105,4 +111,4 @@ def not_found(error=None):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=4000)
