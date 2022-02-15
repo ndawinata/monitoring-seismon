@@ -3,7 +3,26 @@ function restart(){
         "command":"restart"
     })
         .then((c)=>{
-            console.log(c.data)
+            $('#output').append(c.data.output)
+            $('#text').val("")
+            var psconsole = $('#output');
+            if(psconsole.length){
+                psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+            }
+        })
+}
+
+function pull(){
+    axios.post('/command',{
+        "command":"pull"
+    })
+        .then((c)=>{
+            $('#output').append(c.data.output)
+            $('#text').val("")
+            var psconsole = $('#output');
+            if(psconsole.length){
+                psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+            }
         })
 }
 
@@ -12,7 +31,12 @@ function stop(){
         "command":"stop"
     })
         .then((c)=>{
-            console.log(c.data)
+            $('#output').append(c.data.output)
+            $('#text').val("")
+            var psconsole = $('#output');
+            if(psconsole.length){
+                psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+            }
         })
 }
 
@@ -21,7 +45,12 @@ function start(){
         "command":"start"
     })
         .then((c)=>{
-            console.log(c.data)
+            $('#output').append(c.data.output)
+            $('#text').val("")
+            var psconsole = $('#output');
+            if(psconsole.length){
+                psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+            }
         })
 }
 
@@ -30,15 +59,35 @@ function status(){
         "command":"status"
     })
         .then((c)=>{
-            console.log(c.data)
+            $('#output').append(c.data.output)
+                $('#text').val("")
+                var psconsole = $('#output');
+                if(psconsole.length){
+                    psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+                }
         })
 }
 
+function manual(){
+    let text = $('#text').val()
+    if(text!=""){
+        axios.post('/command',{
+            "command":"manual",
+            "text":text
+        })
+            .then((c)=>{
+                $('#output').append(c.data.output)
+                $('#text').val("")
+                var psconsole = $('#output');
+                if(psconsole.length){
+                    psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+                }
+            })
+    }else{
+        window.alert("Command Masih Kosong");
+    }
+}
+
 $(document).ready(function () {
-
-    
-
-   
-
     
 });
