@@ -94,14 +94,14 @@ def command():
             
             return dat
         elif req['command'] == 'manual':
-            result = subprocess.check_output(req['text'], text=True, shell=True)
+            result = os.system(req['text'])
             dat={
                 "output":result,
             }
             
             return dat
         elif req['command'] == 'coba':
-            result = os.system("systemctl stop monseismon.service")
+            result = os.popen("ls").read()
             dat={
                 "output":result,
             }
