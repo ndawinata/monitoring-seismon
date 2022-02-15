@@ -5,7 +5,6 @@ function restart(){
         .then((c)=>{
             if(c.data.output==""){
                 $('#output').append("Server Seismon telah dinyalakan ulang\n")
-                $('#output').append(c.data.output)
                 $('#text').val("")
                 var psconsole = $('#output');
                 if(psconsole.length){
