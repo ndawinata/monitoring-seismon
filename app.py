@@ -54,20 +54,17 @@ def command():
             
             return dat
         elif req['command'] == 'stop':
-            output = subprocess.Popen(["systemctl stop monseismon.service"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            stdout, stderr = output.communicate()
-            print(stdout)
-            print(stderr)
+            result = os.popen("systemctl stop seismon.service").read()
             # subprocess.check_output("systemctl stop seismon.service", shell=True, text=True, encoding="utf8")
             # result =subprocess.call(("coba.sh"), shell=True, text=True, encoding="utf8")
             dat={
-                "output":stdout
-                # "success":True if result == "" else False
+                "output":result,
+                "success":True if result == "" else False
             }
             
             return dat
         elif req['command'] == 'start':
-            result = os.system("systemctl start seismon.service")
+            result = os.popen("systemctl start seismon.service").read()
             # result = subprocess.check_output("systemctl start seismon.service", shell=True, text=True, encoding="utf8")
             dat={
                 "output":result,
@@ -76,7 +73,7 @@ def command():
             
             return dat
         elif req['command'] == 'pull':
-            result = os.system("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon;")
+            result = os.popen("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon;").read()
             # result = subprocess.check_output("cd ../seismon-server;git pull origin master;systemctl restart seismon.service;cd ../monitoring-seismon;", shell=True, text=True, encoding="utf8")
             dat={
                 "output":result,
@@ -85,7 +82,7 @@ def command():
             
             return dat
         elif req['command'] == 'status':
-            result = os.system("systemctl status seismon.service")
+            result = os.popen("systemctl status seismon.service").read()
             # result = subprocess.check_output("systemctl status seismon.service", text=True, shell=True)
             dat={
                 "output":result,
@@ -94,14 +91,14 @@ def command():
             
             return dat
         elif req['command'] == 'manual':
-            result = os.system(req['text'])
+            result = os.popen(req['text']).read()
             dat={
                 "output":result,
             }
             
             return dat
         elif req['command'] == 'coba':
-            result = os.popen("ls").read()
+            result = os.popen("systemctl status seismon.service").read()
             dat={
                 "output":result,
             }
