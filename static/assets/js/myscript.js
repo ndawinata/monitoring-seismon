@@ -3,11 +3,14 @@ function restart(){
         "command":"restart"
     })
         .then((c)=>{
-            $('#output').append(c.data.output)
-            $('#text').val("")
-            var psconsole = $('#output');
-            if(psconsole.length){
-                psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+            if(c.data.output==""){
+                $('#output').append("Server Seismon telah dinyalakan ulang\n")
+                $('#output').append(c.data.output)
+                $('#text').val("")
+                var psconsole = $('#output');
+                if(psconsole.length){
+                    psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+                }
             }
         })
 }
@@ -31,11 +34,13 @@ function stop(){
         "command":"stop"
     })
         .then((c)=>{
-            $('#output').append(c.data.output)
-            $('#text').val("")
-            var psconsole = $('#output');
-            if(psconsole.length){
-                psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+            if(c.data.output==""){
+                $('#output').append("Server Seismon Telah Berhenti\n")
+                $('#text').val("")
+                var psconsole = $('#output');
+                if(psconsole.length){
+                    psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+                }
             }
         })
 }
@@ -45,11 +50,13 @@ function start(){
         "command":"start"
     })
         .then((c)=>{
-            $('#output').append(c.data.output)
-            $('#text').val("")
-            var psconsole = $('#output');
-            if(psconsole.length){
-                psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+            if(c.data.output==""){
+                $('#output').append("Server Seismon Telah Menyala\n")
+                $('#text').val("")
+                var psconsole = $('#output');
+                if(psconsole.length){
+                    psconsole.scrollTop(psconsole[0].scrollHeight - psconsole.height());
+                }
             }
         })
 }
