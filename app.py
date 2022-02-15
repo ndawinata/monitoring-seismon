@@ -101,7 +101,7 @@ def command():
             
             return dat
         elif req['command'] == 'coba':
-            result = os.system("ls")
+            result = os.system("systemctl stop monseismon.service")
             dat={
                 "output":result,
             }
